@@ -78,8 +78,8 @@ const Info = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto">
+    <div className="flex flex-col lg:flex-row h-screen">
+      <div className="w-full lg:w-1/4 bg-gray-100 p-4 overflow-y-auto lg:h-screen">
         <h2 className="text-xl font-bold mb-4">Info Pet Shop</h2>
         <button
           className="text-xl font-semibold mb-4 border w-full h-[50px] rounded-md bg-blue-500 text-white"
@@ -109,7 +109,7 @@ const Info = () => {
         ))}
       </div>
 
-      <div className="w-3/4">
+      <div className="w-full lg:w-3/4 h-[50vh] lg:h-screen">
         <MapContainer center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
           {userLocation && (
