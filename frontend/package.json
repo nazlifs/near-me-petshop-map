@@ -14,6 +14,7 @@
     "axios": "^1.7.7",
     "geolib": "^3.3.4",
     "leaflet": "^1.9.4",
+    "leaflet-routing-machine": "^3.2.12",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

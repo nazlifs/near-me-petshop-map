@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Styling untuk container petunjuk rute dari Leaflet Routing Machine */
+.leaflet-routing-container {
+  @apply bg-white/90 backdrop-blur-md rounded-md shadow-md p-4;
+}
