@@ -35,7 +35,8 @@ const Tambah = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8080/api/petshop', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await axios.post(`${apiUrl}/api/petshop`, {
         nama: name,
         latitude: parseFloat(latitude),
         longitude: parseFloat(longitude),

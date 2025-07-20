@@ -8,6 +8,17 @@ import axios from "axios";
 import { getDistance } from "geolib";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+});
 
 
 const Routing = ({ from, to }) => {
@@ -63,7 +74,8 @@ const Info = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8080/api/petshop");
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const res = await axios.get(`${apiUrl}/api/petshop`);
         const shops = res.data.filter((p) => p.latitude && p.longitude);
         setPetshops(shops);
 
