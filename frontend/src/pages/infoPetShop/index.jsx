@@ -7,6 +7,8 @@ import petshopIcon from "../../assets/iconPS.png";
 import axios from "axios";
 import { getDistance } from "geolib";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 
 const Routing = ({ from, to }) => {
   const map = useMap();
@@ -29,6 +31,11 @@ const Routing = ({ from, to }) => {
   return null;
 };
 
+Routing.propTypes = {
+  from: PropTypes.arrayOf(PropTypes.number),
+  to: PropTypes.arrayOf(PropTypes.number),
+};
+
 const MapCenterer = ({ center }) => {
   const map = useMap();
 
@@ -39,6 +46,10 @@ const MapCenterer = ({ center }) => {
   }, [center, map]);
 
   return null;
+};
+
+MapCenterer.propTypes = {
+  center: PropTypes.arrayOf(PropTypes.number),
 };
 
 const Info = () => {
