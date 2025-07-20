@@ -1,0 +1,12 @@
+Get http://localhost:8080/api/petshop
+
+###.
+POST http://localhost:8080/api/petshop
+Content-Type: application/json
+
+{
+    "nama": "gigu",
+    "longitude": 98.6777,
+    "latitude": 3.5853, 
+    "produk": ["Makanan Anjing", "Makanan Kucing"]
+}
