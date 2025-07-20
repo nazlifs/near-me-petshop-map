@@ -1,0 +1,59 @@
+services:
+  backend:
+    image: node:24.4.1
+    container_name: petshop-backend
+    working_dir: /app
+    command: "npm run dev"
+    volumes:
+      - ./backend:/app
+    user: 1000:1000
+    ports:
+      - 8080:8080
+    networks:
+      - petshop-net
+    profiles: ['dev', 'prod']
+
+  frontend-dev:
+    image: node:24.4.1-slim
+    container_name: petshop-frontend
+    command: npm run dev
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    user: 1000:1000
+    ports:
+      - 8081:8081
+    networks:
+      - petshop-net
+    profiles: ['dev']
+
+  frontend-prod:
+    build:
+      context: ./frontend
+      target: production
+    image: petshop-fe:0.1
+    container_name: petshop-frontend
+    ports:
+      - 8081:80
+    networks:
+      - petshop-net
+    profiles: ['prod']
+
+  db:
+    image: mysql:5.7
+    container_name: petshop-db
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - 3306:3306/tcp
+    networks:
+      - petshop-net
+    profiles: ['dev', 'prod']
+
+
+networks:
+  petshop-net:
+    driver: bridge
