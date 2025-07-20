@@ -8,6 +8,17 @@ import axios from "axios";
 import { getDistance } from "geolib";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 
 const Routing = ({ from, to }) => {
